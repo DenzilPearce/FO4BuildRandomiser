@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.20)
+project(FO4BuildRandomiser VERSION 0.1.0 LANGUAGES CSharp)
+
+set(SOURCE_ROOT_DIR ${PROJECT_SOURCE_DIR}/..)
+
+set(MAIN_SOURCE_DIR ${SOURCE_ROOT_DIR}/FO4BuildRandomiser)
+set(PROPERTIES_SOURCE_DIR ${MAIN_SOURCE_DIR}/Properties)
+
+set(MAIN_SOURCE_FILES 
+	${MAIN_SOURCE_DIR}/Build.cs
+	${MAIN_SOURCE_DIR}/Config.cs
+	${MAIN_SOURCE_DIR}/FormMain.cs
+	${MAIN_SOURCE_DIR}/FormMain.Designer.cs
+	${MAIN_SOURCE_DIR}/Perk.cs
+	${MAIN_SOURCE_DIR}/Program.cs
+	${MAIN_SOURCE_DIR}/SPECIAL.cs)
+	
+set(PROPERTIES_SOURCE_FILES
+	${PROPERTIES_SOURCE_DIR}/AssemblyInfo.cs
+	${PROPERTIES_SOURCE_DIR}/Resources.Designer.cs
+	${PROPERTIES_SOURCE_DIR}/Resources.resx
+	${PROPERTIES_SOURCE_DIR}/Settings.Designer.cs
+	${PROPERTIES_SOURCE_DIR}/Settings.settings)
+
+include(CSharpUtilities)
+
+add_executable(FO4BuildRandomiser
+	${MAIN_SOURCE_FILES}
+	${PROPERTIES_SOURCE_FILES})
+	
+set_property(TARGET FO4BuildRandomiser PROPERTY VS_DOTNET_TARGET_FRAMEWORK_VERSION "v4.7.2")
+set_property(TARGET FO4BuildRandomiser PROPERTY WIN32_EXECUTABLE TRUE)
+
+set_property(TARGET FO4BuildRandomiser PROPERTY VS_DOTNET_REFERENCES
+	"Microsoft.CSharp"
+    "PresentationCore"
+    "PresentationFramework"
+    "System"
+    "System.Core"
+    "System.Data"
+    "System.Data.DataSetExtensions"
+    "System.Net.Http"
+    "System.Xaml"
+    "System.Xml"
+    "System.Xml.Linq"
+    "WindowsBase")
