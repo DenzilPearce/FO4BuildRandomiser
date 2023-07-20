@@ -2,7 +2,7 @@
 
 setlocal
 set "builddir=%~dP0GeneratedSolution"
-set "sourcedir=%~dP0wpfVersion"
+set "sourcedir=%~dP0"
 
 if exist %builddir% rmdir %builddir% /S /Q
 
